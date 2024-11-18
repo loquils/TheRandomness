@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://b23k4d4506cfi"]
+
+[ext_resource type="Script" path="res://Script/Menus/MainMenu.gd" id="1_lqtt0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vq0b"]
+bg_color = Color(0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t3re8"]
+font_size = 40
+font_color = Color(0.552956, 0.552956, 0.552956, 1)
+outline_size = 4
+shadow_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqtt0")
+
+[node name="MainPanelC" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vq0b")
+
+[node name="MenuPanelC" type="PanelContainer" parent="MainPanelC"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MenuVBoxC" type="VBoxContainer" parent="MainPanelC/MenuPanelC"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MainPanelC/MenuPanelC/MenuVBoxC"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 5
+text = "RANDOMNESS"
+label_settings = SubResource("LabelSettings_t3re8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonVBoxC" type="VBoxContainer" parent="MainPanelC/MenuPanelC/MenuVBoxC"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PlayButtonMarginC" type="MarginContainer" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/PlayButtonMarginC"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Jouer"
+
+[node name="SpecialButonsMarginC" type="MarginContainer" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/SpecialButonsMarginC"]
+layout_mode = 2
+
+[node name="OptionsMarginC" type="MarginContainer" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/SpecialButonsMarginC/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionsButton" type="Button" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/SpecialButonsMarginC/HBoxContainer/OptionsMarginC"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Options"
+
+[node name="QuitterMarginC" type="MarginContainer" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/SpecialButonsMarginC/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuitterButton" type="Button" parent="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/SpecialButonsMarginC/HBoxContainer/QuitterMarginC"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quitter"
+
+[connection signal="pressed" from="MainPanelC/MenuPanelC/MenuVBoxC/ButtonVBoxC/PlayButtonMarginC/PlayButton" to="." method="_on_play_button_pressed"]
