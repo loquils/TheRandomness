@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://wey15eieg12s"]
+
+[ext_resource type="Texture2D" uid="uid://d4j20hjuv5gfr" path="res://Design/Epee.png" id="1_ok01l"]
+[ext_resource type="Script" path="res://Script/Player/Epee.gd" id="1_q7xit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgmjy"]
+size = Vector2(20, 8)
+
+[node name="Epee" type="Area2D"]
+script = ExtResource("1_q7xit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ok01l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kgmjy")
+disabled = true
+one_way_collision_margin = 0.0

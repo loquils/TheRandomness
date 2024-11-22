@@ -1,9 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://de7r8kp3bfjnc"]
+[gd_scene load_steps=7 format=3 uid="uid://de7r8kp3bfjnc"]
 
 [ext_resource type="Script" path="res://Script/Player/PlayerScene.gd" id="1_43umx"]
 [ext_resource type="Texture2D" uid="uid://cv5h2xqbdwk4l" path="res://Design/Player.png" id="1_v5yjg"]
+[ext_resource type="PackedScene" uid="uid://wey15eieg12s" path="res://Scenes/Player/Epee.tscn" id="3_oj5rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw4pm"]
+
+[sub_resource type="Animation" id="Animation_j4id3"]
+resource_name = "WeaponDownAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ley05"]
+_data = {
+"WeaponAttackAnimation": SubResource("Animation_j4id3")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(10, 10)
@@ -15,3 +61,20 @@ texture = ExtResource("1_v5yjg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uw4pm")
+
+[node name="Weapons" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 25)
+rotation = 1.5708
+
+[node name="Epee" parent="Weapons" instance=ExtResource("3_oj5rv")]
+
+[node name="AttackTimer" type="Timer" parent="Weapons"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ley05")
+}
+
+[connection signal="timeout" from="Weapons/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
