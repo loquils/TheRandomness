@@ -9,11 +9,11 @@
 script = ExtResource("1_ah8rq")
 
 [node name="MainMenuCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MainMenu" parent="MainMenuCanvasLayer" instance=ExtResource("3_7dye1")]
 
 [node name="SubViewportC" type="SubViewportContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +24,7 @@ grow_vertical = 2
 handle_input_locally = false
 size = Vector2i(1142, 648)
 size_2d_override_stretch = true
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Level" parent="SubViewportC/SubViewport" instance=ExtResource("1_0lyvi")]
 

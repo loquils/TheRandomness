@@ -1,10 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://de7r8kp3bfjnc"]
 
 [ext_resource type="Script" path="res://Script/Player/PlayerScene.gd" id="1_43umx"]
-[ext_resource type="Texture2D" uid="uid://cv5h2xqbdwk4l" path="res://Design/Player.png" id="1_v5yjg"]
+[ext_resource type="Texture2D" uid="uid://dvoeoi1rgomln" path="res://Design/Still_Front_Knight1.png" id="2_g7rll"]
 [ext_resource type="PackedScene" uid="uid://wey15eieg12s" path="res://Scenes/Player/Epee.tscn" id="3_oj5rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw4pm"]
+size = Vector2(30, 48)
 
 [sub_resource type="Animation" id="Animation_j4id3"]
 resource_name = "WeaponDownAnimation"
@@ -52,12 +53,11 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-position = Vector2(10, 10)
 script = ExtResource("1_43umx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_v5yjg")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_g7rll")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uw4pm")
